@@ -1,0 +1,44 @@
+# Netlify Configuration
+# Documentação: https://docs.netlify.com/configure-builds/file-based-configuration/
+
+[build]
+  # Comando de build
+  command = "npm run build"
+  
+  # Diretório de publicação
+  publish = "dist"
+  
+  # Diretório de funções (opcional)
+  functions = "netlify/functions"
+
+# Redirecionamento para fallback (importante para SPA)
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Headers de segurança
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    X-XSS-Protection = "1; mode=block"
+    Referrer-Policy = "no-referrer-when-downgrade"
+
+# Cache de assets
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Cache de HTML (sem cache - sempre busca versão nova)
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+# Variáveis de ambiente (opcional)
+# [build.environment]
+#   NODE_ENV = "production"
+#   VITE_BASE = "/"
