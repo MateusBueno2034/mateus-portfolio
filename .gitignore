@@ -1,0 +1,66 @@
+# Dependencies
+node_modules/
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
+
+# Build outputs
+dist/
+build/
+*.tsbuildinfo
+
+# Vite
+.vite/
+.viteignore
+
+# Environment
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+*.logs
+npm-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# OS files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+.code-workspace
+
+# Testing
+coverage/
+.nyc_output/
+
+# Misc
+.env.local
+*.pem
+.cache/
+dist-ssr/
+
+# Optional npm cache
+.npm/
+
+# Output of 'npm pack'
+*.tgz
+
+# dotenv environment variables file
+.env.development.local
+.env.test.local
+.env.production.local
