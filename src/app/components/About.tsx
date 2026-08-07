@@ -48,7 +48,7 @@ export function About() {
           >
             <div className="rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.04] to-transparent backdrop-blur-md p-7 space-y-5">
               <p className="text-zinc-400 leading-relaxed">
-                Tenho 19 anos e estou começando minha jornada no mundo da
+                Tenho 20 anos e estou começando minha jornada no mundo da
                 tecnologia, com foco em desenvolvimento front-end, interfaces
                 modernas e construção de soluções digitais elegantes e
                 funcionais.
