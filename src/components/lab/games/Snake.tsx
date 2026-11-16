@@ -211,38 +211,40 @@ export function Snake() {
           const isTail = index === snake.length - 1;
           return (
             <span
-              key={`${segment.x}-${segment.y}`}
+              key={`snake-segment-${index}`}
               aria-hidden="true"
-              className={`snake-segment absolute z-10 flex items-center justify-center ${
-                isHead
-                  ? `snake-head snake-head--${direction} rounded-[38%] bg-[var(--snake-color)] shadow-[0_0_14px_rgb(157_182_154_/_38%)] ${
-                      direction === "up" || direction === "down"
-                        ? "h-[calc(100%/14-4px)] w-[calc(100%/18*0.72)]"
-                        : "h-[calc(100%/14*0.72)] w-[calc(100%/18-4px)]"
-                    }`
-                  : `${isTail ? "rounded-full" : "rounded-[34%]"} ${
-                      index % 2
-                        ? "bg-[var(--snake-color-soft)]"
-                        : "bg-[var(--snake-color)]"
-                    } shadow-[0_1px_5px_rgb(0_0_0_/_22%)]`
-              } ${status === "over" ? "snake-segment-dissolve" : ""}`}
+              className="snake-segment absolute z-10 flex items-center justify-center"
               style={{
                 left: `${((segment.x + 0.5) / columns) * 100}%`,
                 top: `${((segment.y + 0.5) / rows) * 100}%`,
                 width: `calc(100% / ${columns} - 4px)`,
                 height: `calc(100% / ${rows} - 4px)`,
                 transform: "translate(-50%, -50%)",
-                transition: `left ${Math.max(60, 130 - score * 3)}ms linear, top ${Math.max(60, 130 - score * 3)}ms linear`,
-                animationDelay:
-                  status === "over" ? `${Math.min(index * 6, 120)}ms` : undefined,
+                transition: "none",
               }}
             >
-              {isHead && (
-                <span className={`absolute flex gap-[18%] ${headEyes[direction]}`}>
-                  <i className="h-1 w-1 rounded-full bg-[#202720]" />
-                  <i className="h-1 w-1 rounded-full bg-[#202720]" />
-                </span>
-              )}
+              <span
+                className={`snake-visual relative flex items-center justify-center ${
+                  isHead
+                    ? `snake-head snake-head--${direction} h-[76%] w-[76%] rounded-[38%] bg-[var(--snake-color)] shadow-[0_0_14px_rgb(157_182_154_/_38%)]`
+                    : `h-full w-full ${isTail ? "rounded-full" : "rounded-[34%]"} ${
+                        index % 2
+                          ? "bg-[var(--snake-color-soft)]"
+                          : "bg-[var(--snake-color)]"
+                      } shadow-[0_1px_5px_rgb(0_0_0_/_22%)]`
+                } ${status === "over" ? "snake-segment-dissolve" : ""}`}
+                style={{
+                  animationDelay:
+                    status === "over" ? `${Math.min(index * 6, 120)}ms` : undefined,
+                }}
+              >
+                {isHead && (
+                  <span className={`absolute flex gap-[18%] ${headEyes[direction]}`}>
+                    <i className="h-1 w-1 rounded-full bg-[#202720]" />
+                    <i className="h-1 w-1 rounded-full bg-[#202720]" />
+                  </span>
+                )}
+              </span>
             </span>
           );
         })}
